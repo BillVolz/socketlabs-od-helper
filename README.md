@@ -1,2 +1,2 @@
-# socketlabs_od_helper
+# socketlabs-od-helper
 Helper tool for injection API
