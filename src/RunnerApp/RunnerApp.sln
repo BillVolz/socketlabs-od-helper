@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunnerApp", "RunnerApp\RunnerApp.csproj", "{160400F4-43E4-4E6A-AEC8-D5D80E727F92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketLabsHelper", "..\SocketLabsHelper\SocketLabsHelper.csproj", "{5C53495D-3A49-453B-93AA-ECECDA461F16}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{160400F4-43E4-4E6A-AEC8-D5D80E727F92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{160400F4-43E4-4E6A-AEC8-D5D80E727F92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{160400F4-43E4-4E6A-AEC8-D5D80E727F92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{160400F4-43E4-4E6A-AEC8-D5D80E727F92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C53495D-3A49-453B-93AA-ECECDA461F16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C53495D-3A49-453B-93AA-ECECDA461F16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C53495D-3A49-453B-93AA-ECECDA461F16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C53495D-3A49-453B-93AA-ECECDA461F16}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5C95B041-41C0-452F-8DDE-A6AB7BCA535A}
+	EndGlobalSection
+EndGlobal
