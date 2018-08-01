@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Net.Mail;
 using SocketLabsHelper;
 
 namespace RunnerApp
@@ -20,8 +22,15 @@ namespace RunnerApp
                 Console.WriteLine(tent.ToString());
             }
 
+            var recipients = new List<System.Net.Mail.MailAddress>();
+            //Keep adding as many recipients as you need.
+            recipients.Add(new MailAddress("exmaple@example.com","My Example"));
+
             var mailer = new Mailer(injectionApiKey, serverid);
-            mailer.SendMergeMessageWithMultipleRecipientsUsingHelper();
+            mailer.SendMergeMessageWithUnlimitedRecipientsUsingHelper(recipients.ToArray());
+
+
+            //mailer.SendMergeMessageWithMultipleRecipientsUsingHelper();
 
             Console.WriteLine("Press Enter to Continue.");
             Console.ReadLine();

@@ -12,6 +12,10 @@ namespace SocketLabsHelper.Services
         private List<List<MergeRow>> RecipientRow { get; } = new List<List<MergeRow>>();
         private List<MergeRow> GlobalMessageMergeData { get; } = new List<MergeRow>();
 
+        public void ClearRecipients()
+        {
+            RecipientRow.Clear();
+        }
         /// <summary>
         /// Returns SocketLabs SDK save MergeData object.
         /// </summary>
