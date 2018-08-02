@@ -69,49 +69,57 @@ namespace SocketLabsHelper
                 if (reciepientsForThisMessage == totalAllowedRecipientsPerMessage)
                 {
                     postBody.Messages[0].MergeData = bulkRecipientData.GetMergeData();
-
-                    try
-                    {
-                        var httpPostServer = new HttpPostService();
-                        var response = httpPostServer.PostAndGetResponse<PostResponse>(postBody,
-                            "https://inject.socketlabs.com/api/v1/email", null);
-                        // Display the results.
-                        if (response.ErrorCode.Equals("Success"))
-                        {
-                            Console.WriteLine("Successful injection!");
-                        }
-                        else if (response.ErrorCode.Equals("Warning"))
-                        {
-                            Console.WriteLine("Warning, not all recipients/messages were sent.");
-                            foreach (var result in response.MessageResults)
-                            {
-                                Console.WriteLine($"Message #{result.Index} {result.ErrorCode}");
-                                foreach (var address in result.AddressResults)
-                                {
-                                    Console.WriteLine(
-                                        $"{address.EmailAddress} {address.ErrorCode} Sent: {address.Accepted}");
-                                }
-
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine("Failed injection!");
-                            Console.WriteLine(response.ErrorCode);
-                        }
-
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("Error, something bad happened: " + ex.Message);
-                    }
-
+                    SendMEssage(postBody);
                     reciepientsForThisMessage = 0;
                     bulkRecipientData.ClearRecipients();
-                }
+                }      
+            }
+            //Recipients that didn't send yet?
+            if (bulkRecipientData.RecipientCount>0)
+            {
+                postBody.Messages[0].MergeData = bulkRecipientData.GetMergeData();
+                SendMEssage(postBody);
             }
         }
-        
+
+        private void SendMEssage(PostBody postBody)
+        {
+            try
+            {
+                var httpPostServer = new HttpPostService();
+                var response = httpPostServer.PostAndGetResponse<PostResponse>(postBody,
+                    "https://inject.socketlabs.com/api/v1/email", null);
+                // Display the results.
+                if (response.ErrorCode.Equals("Success"))
+                {
+                    Console.WriteLine("Successful injection!");
+                }
+                else if (response.ErrorCode.Equals("Warning"))
+                {
+                    Console.WriteLine("Warning, not all recipients/messages were sent.");
+                    foreach (var result in response.MessageResults)
+                    {
+                        Console.WriteLine($"Message #{result.Index} {result.ErrorCode}");
+                        foreach (var address in result.AddressResults)
+                        {
+                            Console.WriteLine(
+                                $"{address.EmailAddress} {address.ErrorCode} Sent: {address.Accepted}");
+                        }
+
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Failed injection!");
+                    Console.WriteLine(response.ErrorCode);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error, something bad happened: " + ex.Message);
+            }
+        }
 
         public void SendMergeMessageWithMultipleRecipientsUsingHelper()
         {
